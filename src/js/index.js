@@ -38,6 +38,7 @@ var brickOffsetLeft = 40;
 var score = 0;
 var reset = 0;
 var level = 1;
+var audio = new Audio('../images/bow.mp3');
 
 /////builds the rows and columns of bricks
 var bricks = [];
@@ -107,6 +108,7 @@ function collisionDetection() {
             if(b.status == 1) {
                 if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
                     dy = -dy;
+                    audio.play();
                     b.status = 0;
                     score++;
                     reset++;
@@ -179,33 +181,3 @@ function draw() {
 }
 
 var runningTheGame = setInterval(draw, 10);
-
-
-
-
-///////code for square
-// var squareSideLengths = 50;
-
-// function drawBox() {
-//     ctx.beginPath();
-//     ctx.rect(x, y, squareSideLengths, squareSideLengths);
-//     ctx.fillStyle = "#0095DD";
-//     ctx.fill();
-//     ctx.closePath();
-// }
-
-// function draw() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     drawBox();
-//     x += dx;
-//     y += dy;
-
-//     if(x + dx > canvas.width-squareSideLengths || x + dx < 0) {
-//     dx = -dx;
-// 	}
-
-// 	if(y + dy > canvas.height-squareSideLengths || y + dy < 0) {
-// 	    dy = -dy;
-// 	}
-
-// }
